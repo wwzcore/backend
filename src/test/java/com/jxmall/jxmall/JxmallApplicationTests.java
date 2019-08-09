@@ -27,7 +27,7 @@ UserInfoController userInfoController;
     @Test
     public void contextLoads() {
         List<UserInfo> userInfos = new ArrayList<UserInfo>();
-        userInfos = userInfoController.getUserlist();
+        userInfos = userInfoController.getUserList();
         System.out.println(userInfos);
 /*        assertTrue(userInfos.size()>0);*/
 /*        UserInfo userInfo = new UserInfo();

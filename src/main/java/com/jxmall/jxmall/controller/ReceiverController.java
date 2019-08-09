@@ -15,14 +15,14 @@ public class ReceiverController {
     @Autowired
     ReceiverService receiverService;
 
-    @RequestMapping(value = "/list")
+    @GetMapping(value = "/list/{userId}")
     @ResponseBody
-    public List<Receiver> getReceiverList(@RequestParam("userId") Integer userId){
+    public List<Receiver> getReceiverList(@PathVariable("userId") Integer userId){
         return receiverService.findAllByUserId(userId);
     }
 
 
-    @RequestMapping(value = "/add")
+    @PutMapping(value = "/add")
     public Receiver addReceiver(@RequestParam("userId") Integer userId,
                                 @RequestParam("receiverName") String receiverName,
                                 @RequestParam("receiverPhone") String receiverPhone,

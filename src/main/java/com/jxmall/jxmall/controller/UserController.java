@@ -4,6 +4,7 @@ package com.jxmall.jxmall.controller;
 import com.jxmall.jxmall.modle.User;
 import com.jxmall.jxmall.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,9 +13,9 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping(value = "/list/{userId}")
+    @GetMapping(value = "/getOne/{userId}")
     @ResponseBody
-    public User getUserByUserId(@PathVariable Integer userId)
+    public User getUserByUserId(@PathVariable("userId") Integer userId)
     {
 
         return userService.getUserByUserId(userId);
@@ -22,13 +23,13 @@ public class UserController {
 
 
     @PutMapping(value = "/updUser/{userId}")
-    public User updateUser(@PathVariable Integer userId,
-                           @RequestParam String userEmail,
-                           @RequestParam String userPhone,
-                           @RequestParam String userSex,
-                           @RequestParam String userRealName,
-                           @RequestParam String userMallName,
-                           @RequestParam String userAddress)
+    public User updateUser(@PathVariable("userId") Integer userId,
+                           @RequestParam("userEmail") String userEmail,
+                           @RequestParam("userPhone") String userPhone,
+                           @RequestParam("userSex") String userSex,
+                           @RequestParam("userRealName") String userRealName,
+                           @RequestParam("userMallName") String userMallName,
+                           @RequestParam("userAddress") String userAddress)
     {
 
         User user = new User();
@@ -43,6 +44,8 @@ public class UserController {
 
         return userService.save(user);
     }
+
+
 
 
 

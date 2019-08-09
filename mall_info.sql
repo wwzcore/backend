@@ -1,4 +1,4 @@
-/*
+﻿/*
 Navicat MySQL Data Transfer
 
 Source Server         : jingxi_mall
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50620
 File Encoding         : 65001
 
-Date: 2019-08-08 19:54:56
+Date: 2019-08-09 11:59:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,20 +20,20 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `receiver`;
 CREATE TABLE `receiver` (
-  `receiverId` bigint(20) NOT NULL AUTO_INCREMENT,
-  `receiverName` varchar(50) DEFAULT NULL,
-  `receiverPhone` varchar(50) DEFAULT NULL,
-  `receiverAddressInfo` varchar(100) DEFAULT NULL,
-  `userId` bigint(20) NOT NULL,
-  PRIMARY KEY (`receiverId`),
-  KEY `user_id` (`userId`),
-  CONSTRAINT `user_id` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+  `receiver_id` int(11) NOT NULL AUTO_INCREMENT,
+  `receiver_name` varchar(50) DEFAULT NULL,
+  `receiver_phone` varchar(50) DEFAULT NULL,
+  `receiver_address_info` varchar(100) DEFAULT NULL,
+  `user_id` int(20) NOT NULL,
+  PRIMARY KEY (`receiver_id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of receiver
 -- ----------------------------
-INSERT INTO `receiver` VALUES ('1', 'ddd', 'ddd', 'ddd', '1');
+INSERT INTO `receiver` VALUES ('1', '3', '3', '3', '1');
 INSERT INTO `receiver` VALUES ('2', 'bbb', 'bbb', 'bbb', '1');
 
 -- ----------------------------
@@ -41,23 +41,22 @@ INSERT INTO `receiver` VALUES ('2', 'bbb', 'bbb', 'bbb', '1');
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `userId` bigint(50) NOT NULL AUTO_INCREMENT,
-  `userName` varchar(32) NOT NULL,
-  `userPassword` varchar(16) NOT NULL,
-  `userEmail` varchar(50) DEFAULT NULL,
-  `userPhone` varchar(50) DEFAULT NULL,
-  `userSex` varchar(2) DEFAULT NULL,
-  `userRealName` varchar(50) DEFAULT NULL,
-  `userMallName` varchar(50) DEFAULT NULL,
-  `userAddress` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`userId`),
-  UNIQUE KEY `user_name` (`userName`) USING BTREE
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(32) DEFAULT NULL,
+  `user_password` varchar(16) DEFAULT NULL,
+  `user_email` varchar(50) DEFAULT NULL,
+  `user_phone` varchar(50) DEFAULT NULL,
+  `user_sex` varchar(2) DEFAULT NULL,
+  `user_real_name` varchar(50) DEFAULT NULL,
+  `user_mall_name` varchar(50) DEFAULT NULL,
+  `user_address` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'aaa', 'aaa', 'aaa', 'aaa', 'a', 'aaa', 'aaa', 'aaa');
+INSERT INTO `user` VALUES ('1', 'aaa', 'aaa', 'zzz', 'zzz', 'z', 'zzz', 'zzz', 'zzz');
 INSERT INTO `user` VALUES ('2', 'bbb', 'bbb', 'bbb', 'bbb', 'b', 'bbb', 'bbb', 'bbb');
 
 -- ----------------------------
@@ -69,12 +68,13 @@ CREATE TABLE `user_info` (
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES ('1', 'Java之音', '12345');
+INSERT INTO `user_info` VALUES ('1', 'qqq', 'qqq');
+INSERT INTO `user_info` VALUES ('7', 'aaa', 'aaa');
 INSERT INTO `user_info` VALUES ('3', 'test', '123');
 INSERT INTO `user_info` VALUES ('4', '342', '23422');
 INSERT INTO `user_info` VALUES ('5', '342', '23422');

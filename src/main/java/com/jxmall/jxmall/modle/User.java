@@ -1,22 +1,31 @@
 package com.jxmall.jxmall.modle;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+
 @Entity(name = "user")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class User
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
+
     private String userName;
+
     private String userPassword;
+
     private String userEmail;
+
     private String userPhone;
+
     private String userSex;
+
     private String userRealName;
+
     private String userMallName;
+
     private String userAddress;
 
     public Integer getUserId() {

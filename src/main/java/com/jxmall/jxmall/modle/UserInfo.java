@@ -1,5 +1,7 @@
 package com.jxmall.jxmall.modle;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,6 +9,7 @@ import javax.persistence.Id;
 
 
 @Entity(name = "user_info")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class UserInfo {
 
     @Id

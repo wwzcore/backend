@@ -20,14 +20,14 @@ public class UserInfoController {
    //select info from user_info
     @GetMapping(value = "/list")
     @ResponseBody
-    public List<UserInfo> getUserlist()
+    public List<UserInfo> getUserList()
     {
         return userInfoService.findAll();
     }
 
-    @GetMapping(value = "/getOne")
+    @GetMapping(value = "/getOne/{id}")
     @ResponseBody
-    public UserInfo getUserByUserId(Integer userId){return userInfoService.findOne(userId);}
+    public UserInfo getUserByUserId(@PathVariable("id") Integer id){return userInfoService.findOne(id);}
 
 
     //add user to user_info

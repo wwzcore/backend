@@ -1,18 +1,25 @@
 package com.jxmall.jxmall.modle;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "receiver")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Receiver {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer receiverId;
+
     private Integer userId;
+
     private String receiverName;
+
     private String receiverPhone;
+
     private String receiverAddressInfo;
 
     public Integer getReceiverId() {
