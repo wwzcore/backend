@@ -1,6 +1,7 @@
 package com.jxmall.jxmall.modle;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 
@@ -20,6 +21,7 @@ public class User
 
     private String userPhone;
 
+    @Length(min = 1,max = 1,message = "aaa")
     private String userSex;
 
     private String userRealName;

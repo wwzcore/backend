@@ -41,10 +41,20 @@ public class UserController {
         user.setUserRealName(userRealName);
         user.setUserMallName(userMallName);
         user.setUserAddress(userAddress);
-
         return userService.save(user);
     }
 
+
+    @PutMapping(value = "addUser")
+    public User addUser(@RequestParam("userName") String userName,
+                        @RequestParam("userPassword") String userPassword)
+    {
+        User user = new User();
+        user.setUserName(userName);
+        user.setUserPassword(userPassword);
+        return userService.save(user);
+
+    }
 
 
 
