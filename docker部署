@@ -1,0 +1,52 @@
+整体需求：将web项目部署到docker环境中，并可以在局域网内访问docker中运行的web服务.
+所需软件工具：docker nignx mysql jdk1.8
+1.安装docker.
+2.
+
+docker-compose	
+version: '2'
+services:
+    mysql:
+        container_name: 'mysql.example.com'
+        image: 'mysql:5.7.23'
+        restart: always
+        hostname: 'mysql.example.com'
+        environment:
+            MYSQL_ROOT_PASSWORD: example
+        # ports:
+        #     - '3306:3306'
+        volumes:
+            - './mysql/data:/var/lib/mysql'
+    app:
+        container_name: 'app.example.com'
+        # build: .
+        image: 'openjdk:latest'
+        restart: always
+        hostname: 'app.example.com'
+        # ports:
+        #     - '8080:8080'
+        depends_on: 
+            - 'mysql'
+        volumes: 
+            - './java:/usr/src/myapp'
+        working_dir: '/usr/src/myapp/'
+        command: java -jar jxmall-0.0.1-SNAPSHOT.jar
+    nginx:
+        container_name: 'web.example.com'
+        image: 'nginx:latest'
+        restart: always
+        hostname: 'web.example.com'
+        volumes:
+            - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+            - ./nginx/conf.d:/etc/nginx/conf.d/
+            - ./front-end:/usr/share/nginx/html
+        ports:
+            - "80:80"
+        depends_on: 
+            - "app"
+        environment:
+            - NGINX_HOST=web.example.com
+            - NGINX_PORT=80
+        command: nginx -g 'daemon off;'
+
+# https://docs.docker.com/compose/compose-file/
