@@ -8,7 +8,7 @@
 器通信的识别名称，environment代表运行容器的环境配置，例如MYSQL_ROOT_PASSWORD: example语句代表我们为mysql容器设置的密码为example，
 volumes代表容器和宿主机的存储地址映射关系，例如'./mysql/data:/var/lib/mysql'代表当前宿主机./mysql/data映射到docker中/var/lib/mysql
 目录下．command代表要容器创建时执行的命令语句．
-4.利用mvn package对后端文件打包，yum build命令对前端文件打包，分别放到./java和./front-end目录下，在当前目录执行docker-compose up命令，
+4.利用mvn package对后端文件打包，yum build命令对前端文件打包，分别放到./java和解压到./front-end目录下，在当前目录执行docker-compose up命令，
 即可以完成启动服务．
 docker-compose文件如下：	
 version: '2'
