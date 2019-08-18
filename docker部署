@@ -1,9 +1,16 @@
 整体需求：将web项目部署到docker环境中，并可以在局域网内访问docker中运行的web服务.
 所需软件工具：docker nignx mysql jdk1.8
 1.安装docker.
-2.
-
-docker-compose	
+2.在docker环境下，安装java运行环境，mysql5.7.23，nignx:latest，可以采用pull命令手动下载镜像，然后利用docker run命令分别创建容器，
+或者采用docker-compose文件进行一键配置（镜像下载和容器创建）,我们利用docker-compose文件进行镜像下载和容器创建,以及建立容器之间的依
+赖关系．
+3.docker-compose中，container_name代表镜像本地名称，image代表从docker仓库中下载的镜像名称和版本，hostname代表docker环境中各容
+器通信的识别名称，environment代表运行容器的环境配置，例如MYSQL_ROOT_PASSWORD: example语句代表我们为mysql容器设置的密码为example，
+volumes代表容器和宿主机的存储地址映射关系，例如'./mysql/data:/var/lib/mysql'代表当前宿主机./mysql/data映射到docker中/var/lib/mysql
+目录下．command代表要容器创建时执行的命令语句．
+4.利用mvn package对后端文件打包，yum build命令对前端文件打包，分别放到./java和./front-end目录下，在当前目录执行docker-compose up命令，
+即可以完成启动服务．
+docker-compose文件如下：	
 version: '2'
 services:
     mysql:
