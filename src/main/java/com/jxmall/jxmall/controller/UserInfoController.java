@@ -7,10 +7,17 @@ import com.jxmall.jxmall.service.UserInfoService;
 import com.jxmall.jxmall.service.UserService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOError;
+import java.io.IOException;
 import java.util.List;
+
+import static com.jxmall.jxmall.common.WebMvcConfig.SEESION_KEY;
 
 @CrossOrigin
 @RestController
@@ -46,6 +53,22 @@ public class UserInfoController {
             return "Success";
         }
         // throw new Exception("登录失败！");
+    }
+
+    @PostMapping(value = "/loginout")
+    @ResponseBody
+    public String loginOut(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException{
+        session.setAttribute(SEESION_KEY,"");
+        String userName =  request.getParameter("userName");
+       if(userName == null || "".equals(userName)){
+           response.sendError(100,"无效退出,用户名不能为空！");
+       }
+       User user = userService.getUserByUserName(userName);
+       if(user == null){
+           response.sendError(100,"无效退出,用户不存在！");
+       }
+       return "{\"message\":\"sucess\"}";
+
     }
 
 
