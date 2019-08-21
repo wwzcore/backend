@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOError;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import static com.jxmall.jxmall.common.WebMvcConfig.SEESION_KEY;
 
@@ -57,16 +58,19 @@ public class UserInfoController {
 
     @PostMapping(value = "/loginout")
     @ResponseBody
-    public String loginOut(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException{
-        session.setAttribute(SEESION_KEY,"");
-        String userName =  request.getParameter("userName");
-       if(userName == null || "".equals(userName)){
+    public String loginOut(@RequestBody Map map, HttpServletResponse response, HttpSession session) throws IOException{
+
+       if(!map.containsKey("userName")){
            response.sendError(100,"无效退出,用户名不能为空！");
+           return null;
        }
+       String userName = map.get("userName").toString();
        User user = userService.getUserByUserName(userName);
        if(user == null){
            response.sendError(100,"无效退出,用户不存在！");
+           return null;
        }
+        session.setAttribute(SEESION_KEY,"");
        return "{\"message\":\"sucess\"}";
 
     }
