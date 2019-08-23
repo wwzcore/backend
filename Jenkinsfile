@@ -37,9 +37,10 @@ pipeline{
 
                 //重启服务
                 //先停服务
-                sh "ssh zxg1990@docker.for.mac.host.internal \"cd;source .bash_profile;cd /Users/zxg1990/src/demo/front-end-backend-demo;docker-compose down\""
-                //重启服务
-                sh "ssh zxg1990@docker.for.mac.host.internal \"cd;source .bash_profile;cd /Users/zxg1990/src/demo/front-end-backend-demo;nohup docker-compose up &\""
+                sh """
+                 ssh zxg1990@docker.for.mac.host.internal "cd /Users/zxg1990/src/demo/front-end-backend-demo/;sh servedown.sh"
+                 ssh zxg1990@docker.for.mac.host.internal "cd /Users/zxg1990/src/demo/front-end-backend-demo/;sh serveup.sh"
+                 """
             }
         }
 
