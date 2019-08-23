@@ -6,7 +6,7 @@ pipeline{
         JENKINS_HOME = '/home/backend'
     }
     triggers{
-        pollSCM('*/20 * * * *')
+        pollSCM('*/30 * * * *')
     }
     stages {
         stage('Build') {
