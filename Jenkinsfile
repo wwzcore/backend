@@ -38,7 +38,7 @@ pipeline{
         }
         
     }
-    agent {label "backend"}
+    agent {label "frontend"}
     //设置环境变量
     environment { 
         JENKINS_HOME = '/home/frontend'
