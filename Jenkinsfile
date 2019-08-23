@@ -42,18 +42,6 @@ pipeline{
                 sh "ssh zxg1990@docker.for.mac.host.internal \"cd /Users/zxg1990/src/demo/front-end-backend-demo&&nohup docker-compose up &\""
             }
         }
-
-    //     stage('front-build') {
-   //
-   //         agent {
-   //                     //label "for-branch-a"
-   //                     label "frontend"
-   //                 }
-   //         steps{
-   //             echo 'This is a deploy step'
-  //              //将产出物扔到外边去
-   ///             sh "touch 111.txt "            }
-    //    }
         
-}
+    }
 }
