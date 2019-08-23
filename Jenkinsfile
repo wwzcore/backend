@@ -29,7 +29,7 @@ pipeline{
                 echo 'This is a deploy step'
                 //将产出物扔到外边去
                 sh """
-                    scp $JENKINS_HOME/workspace/testpip/target/jxmall-0.0.1-SNAPSHOT.jar \
+                    scp $JENKINS_HOME/workspace/backend/target/jxmall-0.0.1-SNAPSHOT.jar \
                         zxg1990@docker.for.mac.host.internal:/Users/zxg1990/src/demo/front-end-backend-demo/java/
                 """
                 //保留产出物
