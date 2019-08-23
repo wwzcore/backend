@@ -38,6 +38,8 @@ pipeline{
         }
         
     }
+}
+pipeline{
     agent {label "frontend"}
     //设置环境变量
     environment { 
