@@ -10,7 +10,6 @@ pipeline{
             steps{
                 //如果有多行的命令，则必须要加三个引号
                 //如果只有一行命令，则可以是一个引号
-                //sh "touch 1.txt"
                 sh """ 
                     mvn package
                     """
@@ -35,26 +34,20 @@ pipeline{
                 //清空工作区
                 cleanWs()
 
-                //重启服务
+               
+            }
+        }
+        stage('Restart') {
+            steps {
+                echo "This is restart serve"
+                 //重启服务
                 //先停服务
                 sh """
                  ssh zxg1990@docker.for.mac.host.internal "cd /Users/zxg1990/src/demo/front-end-backend-demo/;sh servedown.sh"
                  ssh zxg1990@docker.for.mac.host.internal "cd /Users/zxg1990/src/demo/front-end-backend-demo/;sh serveup.sh"
                  """
             }
-        }
 
-    //     stage('front-build') {
-   //
-   //         agent {
-   //                     //label "for-branch-a"
-   //                     label "frontend"
-   //                 }
-   //         steps{
-   //             echo 'This is a deploy step'
-  //              //将产出物扔到外边去
-   //            sh "touch 111.txt "            }
-    //    }
-        
+        }
     }
 }
