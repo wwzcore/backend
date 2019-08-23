@@ -4,7 +4,10 @@ pipeline{
     stages {
         stage('Build') {
             steps{
-                sh "touch 1.txt"
+                sh """
+                    touch 1.txt
+                    touch 2.txt
+                    """
                 echo 'This is a build step' 
             }
         }
