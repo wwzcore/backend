@@ -1,6 +1,6 @@
 //Jenkinsfile (Declarative Pipeline)
-pipeline{
-    agent {label "backend"}
+node('backend'){
+    //agent {label "backend"}
     //设置环境变量
     environment { 
         JENKINS_HOME = '/home/backend'
