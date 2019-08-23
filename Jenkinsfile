@@ -21,7 +21,7 @@ pipeline{
         stage('Deploy') {
             steps{
                 echo 'This is a deploy step'
-                archiveArtifacts artifacts: './target/*.jar', fingerprint: true
+                archiveArtifacts artifacts: '*/jxmall-0.0.1-SNAPSHOT.jar', fingerprint: true
                 cleanWs()
             }
         }
