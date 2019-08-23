@@ -4,9 +4,11 @@ pipeline{
     stages {
         stage('Build') {
             steps{
-                sh """
-                    touch 1.txt
-                    touch 2.txt
+                //如果有多行的命令，则必须要加三个引号
+                //如果只有一行命令，则可以是一个引号
+                //sh "touch 1.txt"
+                sh """ 
+                    mvn package
                     """
                 echo 'This is a build step' 
             }
@@ -18,8 +20,11 @@ pipeline{
         }
         stage('Deploy') {
             steps{
-                echo 'This is a deploy step'    
+                echo 'This is a deploy step'
+                archiveArtifacts artifacts: '*.jar', fingerprint: true
+                cleanWs()
             }
         }
+        
     }
 }
