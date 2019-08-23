@@ -1,6 +1,6 @@
 //Jenkinsfile (Declarative Pipeline)
-node('backend'){
-    //agent {label "backend"}
+pipeline{
+    agent {label "backend"}
     //设置环境变量
     environment { 
         JENKINS_HOME = '/home/backend'
@@ -36,15 +36,18 @@ node('backend'){
                 cleanWs()
             }
         }
+
+         stage('front-build') {
+
+             agent {
+                        //label "for-branch-a"
+                        label "frontend"
+                    }
+            steps{
+                echo 'This is a deploy step'
+                //将产出物扔到外边去
+                sh "touch 111.txt "            }
+        }
         
     }
-}
-pipeline{
-    agent {label "frontend"}
-    //设置环境变量
-    stage('Test') {
-            steps{
-                echo 'This is a test step2'  
-            }
-        }
 }
