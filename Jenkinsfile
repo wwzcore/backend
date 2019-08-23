@@ -1,6 +1,10 @@
 //Jenkinsfile (Declarative Pipeline)
 pipeline{
     agent {label "backend"}
+    //设置环境变量
+    environment { 
+        JENKINS_HOME = '/home/backend'
+    }
     stages {
         stage('Build') {
             steps{
@@ -27,7 +31,7 @@ pipeline{
                         zxg1990@docker.for.mac.host.internal:/Users/zxg1990/src/demo/front-end-backend-demo/java/
                 """
                 //保留产出物
-                archiveArtifacts artifacts: '*/jxmall-0.0.1-SNAPSHOT.jar', fingerprint: true
+                archiveArtifacts artifacts: '*/*.jar', fingerprint: true
                 //清空工作区
                 cleanWs()
             }
