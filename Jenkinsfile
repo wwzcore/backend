@@ -3,7 +3,7 @@ pipeline{
     agent {label "backend"}
     //设置环境变量
     environment { 
-        JENKINS_HOME = '/home/backend'
+        JENKINS_HOME = '/home/backupend'
     }
     triggers{
         pollSCM('*/30 * * * *')
