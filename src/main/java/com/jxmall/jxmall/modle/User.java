@@ -40,6 +40,8 @@ public class User
     @Length(max = 1000,message = "最大长度位1000位")
     private String userAddress;
 
+    private String imgUrl;
+
     public Integer getUserId() {
         return userId;
     }
@@ -103,7 +105,13 @@ public class User
     public void setUserAddress(String userAddress) {
         this.userAddress = userAddress;
     }
+    public String getImgUrl() {
+        return imgUrl;
+    }
 
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
     public User() {
     }
 
@@ -118,6 +126,7 @@ public class User
                 ", userRealName='" + userRealName + '\'' +
                 ", userMallName='" + userMallName + '\'' +
                 ", userAddress='" + userAddress + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
                 '}';
     }
 }
