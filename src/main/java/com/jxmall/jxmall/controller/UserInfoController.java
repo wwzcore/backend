@@ -41,7 +41,7 @@ public class UserInfoController {
         if (login_user == null) {
             return "No user";
         } else if (!userInfoService.getByUserId(login_user.getUserId()).getUserPassword().equals(userInfo.getUserPassword())) {
-            System.out.println(userInfoService.getByUserId(login_user.getUserId()).getUserPassword() + "asdfasfdafsd:" + userInfo.getUserPassword());
+//            System.out.println(userInfoService.getByUserId(login_user.getUserId()).getUserPassword() + "asdfasfdafsd:" + userInfo.getUserPassword());
             return "Password error";
         } else {
             return "Success";
