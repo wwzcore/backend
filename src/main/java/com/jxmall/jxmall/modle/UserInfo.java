@@ -1,21 +1,19 @@
 package com.jxmall.jxmall.modle;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
 @Entity(name = "user_info")
-// @JsonIgnoreProperties({"userName"})
+// @JsonIgnoreProperties({"name"})
 public class UserInfo {
 
     @Id
     private Integer userId;
 
-    private String userName;
+    @Column(name = "user_name")
+    private String name;
 
     private String userPassword;
 
@@ -27,12 +25,12 @@ public class UserInfo {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUserPassword() {

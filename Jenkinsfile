@@ -6,7 +6,7 @@ pipeline{
         JENKINS_HOME = '/home/backupend'
     }
     triggers{
-        pollSCM('*/30 * * * *')
+        pollSCM('H/25 * * * *')
     }
     stages {
         stage('Build') {

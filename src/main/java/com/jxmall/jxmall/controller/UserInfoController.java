@@ -37,7 +37,7 @@ public class UserInfoController {
     @ResponseBody
     public String getUserByUserId(@RequestBody UserInfo userInfo) {
         // httpSession.setAttribute("userId", userInfo.getUserId());
-        User login_user = userService.getUserByUserName(userInfo.getUserName());
+        User login_user = userService.getUserByUserName(userInfo.getName());
         if (login_user == null) {
             return "No user";
         } else if (!userInfoService.getByUserId(login_user.getUserId()).getUserPassword().equals(userInfo.getUserPassword())) {
@@ -72,9 +72,9 @@ public class UserInfoController {
     //add user to user_info
     @PostMapping(value = "/addUser")
     public UserInfo addUser(@RequestBody UserInfo userInfo) {
-        User user = userService.getUserByUserName(userInfo.getUserName());
+        User user = userService.getUserByUserName(userInfo.getName());
         userInfo.setUserId(user.getUserId());
-        userInfo.setUserName(userInfo.getUserName());
+        userInfo.setName(userInfo.getName());
         userInfo.setUserPassword(userInfo.getUserPassword());
 
         return userInfoService.save(userInfo);
@@ -88,7 +88,7 @@ public class UserInfoController {
                             @RequestParam("password") String userPassword) {
 
         UserInfo userInfo = userInfoService.findOne(userId);
-        userInfo.setUserName(userName);
+        userInfo.setName(userName);
         userInfo.setUserPassword(userPassword);
         return userInfoService.save(userInfo);
 

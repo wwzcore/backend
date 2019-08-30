@@ -20,7 +20,7 @@ public class UserInfoService {
     public UserInfo save(UserInfo userInfo){return userInfoDao.save(userInfo);}
     public void delete(UserInfo userInfo){userInfoDao.delete(userInfo);}
     public UserInfo findOne(Integer userName){return userInfoDao.getOne(userName);}
-    public UserInfo findOneforLogin(String userName, String userPassword){return userInfoDao.findByUserNameAndUserPassword(userName, userPassword);}
+    public UserInfo findOneforLogin(String userName, String userPassword){return userInfoDao.findByNameAndUserPassword(userName, userPassword);}
     public UserInfo getByUserId(Integer userId){return userInfoDao.findByUserId(userId);}
 
 
