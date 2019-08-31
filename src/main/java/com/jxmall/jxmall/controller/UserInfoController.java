@@ -40,8 +40,7 @@ public class UserInfoController {
         User login_user = userService.getUserByUserName(userInfo.getName());
         if (login_user == null) {
             return "No user";
-        } else if (!userInfoService.getByUserId(login_user.getUserId()).getUserPassword().equals(userInfo.getUserPassword())) {
-//            System.out.println(userInfoService.getByUserId(login_user.getUserId()).getUserPassword() + "asdfasfdafsd:" + userInfo.getUserPassword());
+        } else if (!userInfoService.getByUserId(login_user.getUserId()).getPassword().equals(userInfo.getPassword())) {
             return "Password error";
         } else {
             return "Success";
@@ -75,7 +74,7 @@ public class UserInfoController {
         User user = userService.getUserByUserName(userInfo.getName());
         userInfo.setUserId(user.getUserId());
         userInfo.setName(userInfo.getName());
-        userInfo.setUserPassword(userInfo.getUserPassword());
+        userInfo.setPassword(userInfo.getPassword());
 
         return userInfoService.save(userInfo);
     }
@@ -89,7 +88,7 @@ public class UserInfoController {
 
         UserInfo userInfo = userInfoService.findOne(userId);
         userInfo.setName(userName);
-        userInfo.setUserPassword(userPassword);
+        userInfo.setPassword(userPassword);
         return userInfoService.save(userInfo);
 
     }

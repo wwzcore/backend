@@ -15,7 +15,8 @@ public class UserInfo {
     @Column(name = "user_name")
     private String name;
 
-    private String userPassword;
+    @Column(name = "user_password")
+    private String password;
 
     public Integer getUserId() {
         return userId;
@@ -33,12 +34,12 @@ public class UserInfo {
         this.name = name;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public UserInfo() {
