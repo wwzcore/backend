@@ -45,7 +45,7 @@ pipeline{
                 //保留产出物
                 archiveArtifacts artifacts: '*/*.jar', fingerprint: true
                 //清空工作区
-                //cleanWs()
+                cleanWs()
 
                
             }
