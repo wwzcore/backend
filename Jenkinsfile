@@ -19,6 +19,16 @@ pipeline{
                 echo 'This is a build step' 
             }
         }
+        stage('scan') {
+            steps{
+                //如果有多行的命令，则必须要加三个引号
+                //如果只有一行命令，则可以是一个引号
+                sh """ 
+                    sonar-scanner
+                    """
+                echo 'This is a scan step' 
+            }
+        }
         stage('Test') {
             steps{
                 echo 'This is a test step'  
