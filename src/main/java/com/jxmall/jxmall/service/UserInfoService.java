@@ -15,13 +15,29 @@ public class UserInfoService {
     @Autowired
     private UserInfoRepository userInfoDao;
 
+    public List<UserInfo> findAll() {
+        return userInfoDao.findAll();
+    }
 
-    public List<UserInfo> findAll(){return userInfoDao.findAll();}
-    public UserInfo save(UserInfo userInfo){return userInfoDao.save(userInfo);}
-    public void delete(UserInfo userInfo){userInfoDao.delete(userInfo);}
-    public UserInfo findOne(Integer userName){return userInfoDao.getOne(userName);}
-    public UserInfo findOneforLogin(String userName, String userPassword){return userInfoDao.findByUserNameAndUserPassword(userName, userPassword);}
-    public UserInfo getByUserId(Integer userId){return userInfoDao.findByUserId(userId);}
+    public UserInfo save(UserInfo userInfo) {
+        return userInfoDao.save(userInfo);
+    }
+
+    public void delete(UserInfo userInfo) {
+        userInfoDao.delete(userInfo);
+    }
+
+    public UserInfo findOne(Integer userName) {
+        return userInfoDao.getOne(userName);
+    }
+
+    public UserInfo findOneforLogin(String userName, String userPassword) {
+        return userInfoDao.findByNameAndPassword(userName, userPassword);
+    }
+
+    public UserInfo getByUserId(Integer userId) {
+        return userInfoDao.findByUserId(userId);
+    }
 
 
 }
