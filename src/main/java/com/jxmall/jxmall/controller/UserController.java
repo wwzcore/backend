@@ -36,6 +36,10 @@ public class UserController {
     @PostMapping(value = "/addUser")
     public String addUser(@RequestBody User user) {
 
+        int a;
+        a=2;
+        if (a==1){  }
+
         if (userService.getUserByUserName(user.getName()) != null) {
             System.out.println(userService.getUserByUserName(user.getName()));
             return "userName false";
@@ -60,6 +64,7 @@ public class UserController {
         update_user.setRealName(user.getRealName());
         update_user.setMallName(user.getMallName());
         update_user.setAddress(user.getAddress());
+
 
         return userService.save(update_user);
     }
