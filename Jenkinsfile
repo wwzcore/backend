@@ -5,9 +5,9 @@ pipeline{
     environment { 
         JENKINS_HOME = '/home/backupend'
     }
-    triggers{
+    //triggers{
         // pollSCM('H/25 * * * *')
-    }
+    //}
     stages {
         stage('Build') {
             steps{
